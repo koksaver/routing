@@ -1,0 +1,84 @@
+Subject: Revert "batman-adv: Add new include for random/bug helpers"
+
+The OpenWrt kernel sources and backports sources are currently missing this
+header.
+--- a/net/batman-adv/bat_iv_ogm.c
++++ b/net/batman-adv/bat_iv_ogm.c
+@@ -27,7 +27,6 @@
+ #include <linux/netdevice.h>
+ #include <linux/netlink.h>
+ #include <linux/pkt_sched.h>
+-#include <linux/prandom.h>
+ #include <linux/printk.h>
+ #include <linux/random.h>
+ #include <linux/rculist.h>
+
+--- a/net/batman-adv/bat_v_elp.c
++++ b/net/batman-adv/bat_v_elp.c
+@@ -21,7 +21,6 @@
+ #include <linux/minmax.h>
+ #include <linux/netdevice.h>
+ #include <linux/nl80211.h>
+-#include <linux/prandom.h>
+ #include <linux/random.h>
+ #include <linux/rculist.h>
+ #include <linux/rcupdate.h>
+
+--- a/net/batman-adv/bat_v_ogm.c
++++ b/net/batman-adv/bat_v_ogm.c
+@@ -21,7 +21,6 @@
+ #include <linux/minmax.h>
+ #include <linux/mutex.h>
+ #include <linux/netdevice.h>
+-#include <linux/prandom.h>
+ #include <linux/random.h>
+ #include <linux/rculist.h>
+ #include <linux/rcupdate.h>
+
+--- a/net/batman-adv/main.c
++++ b/net/batman-adv/main.c
+@@ -7,7 +7,7 @@
+ #include "main.h"
+ 
+ #include <linux/atomic.h>
+-#include <linux/build_bug.h>
++#include <linux/bug.h>
+ #include <linux/byteorder/generic.h>
+ #include <linux/crc32c.h>
+ #include <linux/device.h>
+
+--- a/net/batman-adv/network-coding.c
++++ b/net/batman-adv/network-coding.c
+@@ -25,7 +25,7 @@
+ #include <linux/lockdep.h>
+ #include <linux/net.h>
+ #include <linux/netdevice.h>
+-#include <linux/prandom.h>
++#include <linux/random.h>
+ #include <linux/printk.h>
+ #include <linux/rculist.h>
+ #include <linux/rcupdate.h>
+
+--- a/net/batman-adv/tp_meter.c
++++ b/net/batman-adv/tp_meter.c
+@@ -8,7 +8,7 @@
+ #include "main.h"
+ 
+ #include <linux/atomic.h>
+-#include <linux/build_bug.h>
++#include <linux/bug.h>
+ #include <linux/byteorder/generic.h>
+ #include <linux/cache.h>
+ #include <linux/compiler.h>
+
+--- a/net/batman-adv/translation-table.c
++++ b/net/batman-adv/translation-table.c
+@@ -9,7 +9,7 @@
+ 
+ #include <linux/atomic.h>
+ #include <linux/bitops.h>
+-#include <linux/build_bug.h>
++#include <linux/bug.h>
+ #include <linux/byteorder/generic.h>
+ #include <linux/cache.h>
+ #include <linux/compiler.h>
